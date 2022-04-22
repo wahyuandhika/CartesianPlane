@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartesian Plane Settings</title>
+    <style>
+        canvas {
+            border: 1px solid rgb(0, 0, 0)
+        }
+    </style>
+</head>
+<body>
+    <div class="slidecontainer">
+        <span>PlaneMargin: </span>
+        <input type="range" min="0" max="100" value="10" class="slider" id="planeMargin">
+        <span>EndPointMargin: </span>
+        <input type="range" min="0" max="50" value="10" class="slider" id="endPointMargin">
+        <span>MaxPointView: </span>
+        <input type="range" min="1" max="100" class="slider" id="maxPointView">
+        <span>StrideCount: </span>
+        <input type="range" min="0" max="10" value="2" class="slider" id="strideCount">
+        <span>drawPlaneLine</span>
+        <input type="checkbox" id="drawPlaneLine">
+    </div>
+    <canvas id="maincanvas" width="550" height="550">
+        <div style="color: red; font-weight: normal; padding: 10px;">Error: your browser does not support HTML canvas</div>
+    </canvas>
+    <script src="./main.js" type="module"></script>
+</body>
+</html>
