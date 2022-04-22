@@ -93,25 +93,30 @@ class CartesianPlane {
             this.ctx.stroke()
             this.ctx.closePath()
             
-            const offset = (i * this.#step) - this.settings.maxPointView
-            let strOffset = null
-            if (offset % 1 != 0) {
-                strOffset = numberToText2Decimals(offset)
+            const xOffset = (i * this.#step) - this.settings.maxPointView
+            const yOffset = -xOffset
+
+            let strXOffset = null
+            let strYOffset = null
+            if (xOffset % 1 != 0) {
+                strXOffset = numberToText2Decimals(xOffset)
+                strYOffset = numberToText2Decimals(yOffset)
             } else {
-                strOffset = offset.toString()
+                strXOffset = xOffset.toString()
+                strYOffset = yOffset.toString()
             }
-            const metrics = this.ctx.measureText(strOffset)
+            const metrics = this.ctx.measureText(strXOffset)
             const strOffsetHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
             // horizontal text
             this.ctx.fillText(
-                strOffset,
+                strXOffset,
                 this.settings.planeMargin + this.settings.endPointMargin + (i * ((this.#planeWidth-(this.settings.endPointMargin*2))/2/this.settings.strideCount)) - (metrics.width/2),
                 this.settings.planeMargin + this.#planeHeight + 15
             )
 
             // vertical text
             this.ctx.fillText(
-                strOffset,
+                strYOffset,
                 this.settings.planeMargin + this.#planeWidth + 5,
                 this.settings.planeMargin + this.settings.endPointMargin + (i * ((this.#planeHeight-(this.settings.endPointMargin*2))/2/this.settings.strideCount)) + strOffsetHeight/2,
             )
